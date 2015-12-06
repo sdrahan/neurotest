@@ -9,7 +9,7 @@ package task_2_array_shuffling
 
 		public function Task2ArrayShuffling()
 		{
-			setTimeout( start, 2000 );
+			setTimeout( start, 500 );		// small timeout just so everything is not happening in the constructor
 		}
 
 		private function start():void

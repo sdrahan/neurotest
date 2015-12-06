@@ -9,10 +9,6 @@ package
 	import starling.events.Event;
 	import starling.utils.AssetManager;
 
-	import task_2_array_shuffling.Task2ArrayShuffling;
-
-	import task_3_date.Task3Date;
-
 	import task_5_grid_pattern.Task5GridPattern;
 
 	[SWF(width="800", height="600", frameRate="60", backgroundColor="#000000")]
@@ -46,7 +42,7 @@ package
 			starlingAssetManager.enqueue( EmbeddedAtlas );
 			starlingAssetManager.loadQueue( onProgress );
 
-			AssetsManager.instance.setStarlingAssrtManager(starlingAssetManager);
+			AssetsManager.instance.setStarlingAssrtManager( starlingAssetManager );
 		}
 
 		private function onProgress( ratio:Number ):void
@@ -65,8 +61,8 @@ package
 		private function showMainMenu():void
 		{
 			trace( "Init complete" );
-			var task:Task2ArrayShuffling = new Task2ArrayShuffling();
-//			starlingMain.addChild(task);
+			var task:Task5GridPattern = new Task5GridPattern();
+			starlingMain.addChild( task );
 		}
 	}
 }
