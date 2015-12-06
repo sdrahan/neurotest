@@ -13,7 +13,8 @@ package task_1_rotator_component.components.linearRotator
 
 		private static const SPACING:int = 20;
 		private static const OFFSET:int = 10;
-		private static const SIZE:int = 40;
+		
+		private static const SHIFT_ANIMATION_DURATION:Number = 0.5;
 
 		public function LinearRotator( itemClass:Class, dataVOs:Vector.<RotatorItemDataVO>, highlightedItemIndex:int )
 		{
@@ -97,8 +98,8 @@ package task_1_rotator_component.components.linearRotator
 			for (var i:int = 0; i < items.length; i++)
 			{
 				TweenMax.to(
-						items[i], 5, {
-							y: items[i].y - SIZE - SPACING,
+						items[i], SHIFT_ANIMATION_DURATION, {
+							y: items[i].y - items[i].getSize().height - SPACING,
 							onComplete: function ():void
 							{
 								isInMotion = false
@@ -117,7 +118,7 @@ package task_1_rotator_component.components.linearRotator
 				items[i].x = 0;
 				items[i].y = currentY;
 
-				currentY += SIZE + SPACING;
+				currentY += items[i].getSize().height + SPACING;
 			}
 		}
 	}
