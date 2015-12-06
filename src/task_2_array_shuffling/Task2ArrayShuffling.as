@@ -5,6 +5,8 @@ package task_2_array_shuffling
 
 	public class Task2ArrayShuffling
 	{
+		private static var ELEMENTS_COUNT:int = 5000;
+
 		public function Task2ArrayShuffling()
 		{
 			setTimeout( start, 2000 );
@@ -12,30 +14,33 @@ package task_2_array_shuffling
 
 		private function start():void
 		{
-			var timeAtTheBeginning:Number;
-			var timeAtTheEnd:Number;
-			var elementsCount:int = 100000;
+			trace( "Method 1:" );	// good shuffling method: create another array and put random elements to it from the initial array while splicing it
+			measurePerformance(shuffle1);
 
-			trace( "Method 1:" );
-			var initialArray:Array = getInitialArray( elementsCount );
-			timeAtTheBeginning = (new Date()).time;
-			shuffle1( initialArray );
-			timeAtTheEnd = (new Date()).time;
-			trace( "Time (ms): " + (timeAtTheEnd - timeAtTheBeginning) );
+			trace( "Method 1 (optimized):" );	// looks like my optimization didn't really gave any boost, most probably compiler already optimized everything
+			measurePerformance(shuffle1Optimized);
 
-			trace( "Method 1 (optimized):" );
-			var initialArray:Array = getInitialArray( elementsCount );
-			timeAtTheBeginning = (new Date()).time;
-			shuffle1Optimized( initialArray );
-			timeAtTheEnd = (new Date()).time;
-			trace( "Time (ms): " + (timeAtTheEnd - timeAtTheBeginning) );
+			trace( "Method 2:" );	// this method is usually one of the most recommended, but in reality it's pretty bad
+			measurePerformance(shuffle2);
+		}
 
-			trace( "Method 2:" );
-			var initialArray:Array = getInitialArray( elementsCount );
-			timeAtTheBeginning = (new Date()).time;
-			shuffle2( initialArray );
-			timeAtTheEnd = (new Date()).time;
+		private function measurePerformance(shufflingFunction:Function):void
+		{
+			var initialArray:Array = getInitialArray( ELEMENTS_COUNT );
+			var timeAtTheBeginning:Number = (new Date()).time;
+			shufflingFunction( initialArray );
+			var timeAtTheEnd:Number = (new Date()).time;
 			trace( "Time (ms): " + (timeAtTheEnd - timeAtTheBeginning) );
+		}
+
+		private function getInitialArray( elementsCount:int ):Array
+		{
+			var array:Array = [];
+			for (var i:int = 1; i <= elementsCount; i++)	// starting from 1 so array will be filled neatly - like [1,2,3]
+			{
+				array.push( i );
+			}
+			return array;
 		}
 
 		private function shuffle1( initialArray:Array ):void
@@ -48,7 +53,6 @@ package task_2_array_shuffling
 				shuffledArray.push( initialArray[index] );
 				initialArray.splice( index, 1 );
 			}
-//			trace( initialArray, shuffledArray );
 		}
 
 		private function shuffle1Optimized( initialArray:Array ):void
@@ -63,7 +67,6 @@ package task_2_array_shuffling
 				shuffledArray.push( initialArray.splice( index, 1 )[0] );
 				arrayLength--;
 			}
-//			trace( shuffledArray );
 		}
 
 		private function shuffle2( initialArray:Array ):void
@@ -82,18 +85,6 @@ package task_2_array_shuffling
 					return 0;
 				}
 			}
-
-//			trace( initialArray );
-		}
-
-		private function getInitialArray( elementsCount:int ):Array
-		{
-			var array:Array = [];
-			for (var i:int = 1; i <= elementsCount; i++)	// starting from 1 so array will be filled neatly - like [1,2,3]
-			{
-				array.push( i );
-			}
-			return array;
 		}
 	}
 }

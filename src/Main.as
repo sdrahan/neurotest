@@ -65,8 +65,8 @@ package
 		private function showMainMenu():void
 		{
 			trace( "Init complete" );
-			var task5GridPattern:Task5GridPattern = new Task5GridPattern();
-			starlingMain.addChild(task5GridPattern);
+			var task:Task2ArrayShuffling = new Task2ArrayShuffling();
+//			starlingMain.addChild(task);
 		}
 	}
 }
