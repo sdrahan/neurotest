@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:12dc2729cb86d9c1789c9f1c97303faa:1a00ec5af7f40214f9857a1a42e7b517:c8f20f12322473f53b5dd7cf7eccd63c$ -->
+<TextureAtlas imagePath="neurotexture.png">
+    <SubTexture name="grid_bg_frame" x="2" y="2" width="40" height="40"/>
+    <SubTexture name="grid_cell_1" x="2" y="44" width="30" height="30"/>
+    <SubTexture name="grid_cell_2" x="2" y="76" width="30" height="30"/>
+    <SubTexture name="grid_cell_3" x="34" y="44" width="30" height="30"/>
+    <SubTexture name="grid_cell_4" x="44" y="2" width="30" height="30"/>
+    <SubTexture name="grid_cell_5" x="34" y="76" width="30" height="30"/>
+    <SubTexture name="grid_cell_6" x="76" y="2" width="30" height="30"/>
+    <SubTexture name="grid_cell_7" x="66" y="34" width="30" height="30"/>
+</TextureAtlas>
