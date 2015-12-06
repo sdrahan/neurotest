@@ -7,6 +7,7 @@ package task_1_rotator_component
 	{
 		public function Task1RotatorComponent()
 		{
+			
 		}
 	}
 }
