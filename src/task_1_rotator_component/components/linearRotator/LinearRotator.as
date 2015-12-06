@@ -15,19 +15,29 @@ package task_1_rotator_component.components.linearRotator
 		private static const OFFSET:int = 10;
 		private static const SIZE:int = 40;
 
-		public function LinearRotator( itemClass:Class, dataVOs:Vector.<RotatorItemDataVO>, highlightedIndex:int )
+		public function LinearRotator( itemClass:Class, dataVOs:Vector.<RotatorItemDataVO>, highlightedItemIndex:int )
 		{
 			items = new <RotatorItemRenderer>[];
 
-			if (highlightedIndex < dataVOs.length)
+			checkAndSetHighlightedIndex( highlightedItemIndex, dataVOs.length );
+			createInitialItems( itemClass, dataVOs );
+			updateItemsPosition();
+		}
+
+		private function checkAndSetHighlightedIndex( highlightedIndex:int, itemsCount:int ):void
+		{
+			if (highlightedIndex < itemsCount)
 			{
 				highlightedItemIndex = highlightedIndex;
 			}
 			else
 			{
-				highlightedItemIndex = dataVOs.length - 1;
+				highlightedItemIndex = itemsCount - 1;
 			}
+		}
 
+		private function createInitialItems( itemClass:Class, dataVOs:Vector.<RotatorItemDataVO> ):void
+		{
 			for (var i:int = 0; i < dataVOs.length + 1; i++)
 			{
 				var item:RotatorItemRenderer = (new itemClass()) as RotatorItemRenderer;
@@ -39,40 +49,50 @@ package task_1_rotator_component.components.linearRotator
 					addChild( item );
 				}
 			}
-
-			updateItemsPosition();
 		}
 
 		public function pushItemDataVO( dataVO:RotatorItemDataVO, customState:String = "" ):void
 		{
 			if (isInMotion)
 			{
-				for (var i:int = 0; i < items.length; i++)
-				{
-					TweenMax.killTweensOf( items[i] );
-				}
-				updateItemsPosition();
+				stopMotionImmediately();
 			}
 
+			setupLastItemWithDataVO( dataVO );
+			updateItemsPosition();
+			items[highlightedItemIndex].unhighlight( customState );
+			items[highlightedItemIndex + 1].highlight();
+			moveFirstItemToTheEnd();
+			displayShiftAnimation();
+		}
+
+		private function setupLastItemWithDataVO( dataVO:RotatorItemDataVO ):void
+		{
 			var lastItem:RotatorItemRenderer = items[items.length - 1];
 			lastItem.setDataVO( dataVO );
 			lastItem.init();
 			lastItem.fadeIn();
 			addChild( lastItem );
+		}
 
+		private function stopMotionImmediately():void
+		{
+			for (var i:int = 0; i < items.length; i++)
+			{
+				TweenMax.killTweensOf( items[i] );
+			}
 			updateItemsPosition();
+			isInMotion = false;
+		}
 
-			items[highlightedItemIndex].unhighlight( customState );
-			items[highlightedItemIndex + 1].highlight();
-
+		private function moveFirstItemToTheEnd():void
+		{
 			var firstItem:RotatorItemRenderer = items.shift();
 			firstItem.fadeOut();
 			items.push( firstItem );
-
-			shift();
 		}
 
-		private function shift():void
+		private function displayShiftAnimation():void
 		{
 			for (var i:int = 0; i < items.length; i++)
 			{
