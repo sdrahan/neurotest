@@ -20,7 +20,7 @@ package task_2_array_shuffling
 			trace( "Method 1 (optimized):" );	// looks like my optimization didn't really gave any boost, most probably compiler already optimized everything
 			measurePerformance(shuffle1Optimized);
 
-			trace( "Method 2:" );	// this method is usually one of the most recommended, but in reality it's pretty bad
+			trace( "Method 2:" );	// this method is one of the most popular, but its performance is pretty bad
 			measurePerformance(shuffle2);
 		}
 

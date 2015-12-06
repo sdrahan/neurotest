@@ -11,6 +11,9 @@
             <entry library-id="238e6858-d673-4b6a-a72e-372e0f30874a">
               <dependency linkage="Merged" />
             </entry>
+            <entry library-id="d17bf876-2a9d-40b7-821a-320b7ee93987">
+              <dependency linkage="Merged" />
+            </entry>
           </entries>
           <sdk name="air_sdk_19" />
         </dependencies>
@@ -48,6 +51,16 @@
         <properties id="238e6858-d673-4b6a-a72e-372e0f30874a" />
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/feathers.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="d17bf876-2a9d-40b7-821a-320b7ee93987" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/greensock.swc!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -25,8 +25,8 @@ package task_5_grid_pattern
 			createGridPatterns();
 
 			// uncomment one of the following methods
-			useRenderTexture();		// 1 draw call per scene
-//			useRegularApproach();	// 1 draw call per element
+//			useRenderTexture();		// 1 draw call per scene
+			useRegularApproach();	// 1 draw call per element
 
 			// further optimization: pool patterns and re-init them instead of creating new instances
 		}
