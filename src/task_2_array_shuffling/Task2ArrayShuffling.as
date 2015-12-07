@@ -17,7 +17,7 @@ package task_2_array_shuffling
 			trace( "Method 1:" );	// good shuffling method: create another array and put random elements to it from the initial array while splicing it. O(n) solution
 			measurePerformance(shuffle1);
 
-			trace( "Method 1 (optimized):" );	// looks like my optimization didn't really gave any boost, most probably compiler already optimized everything
+			trace( "Method 1 (optimized):" );	// looks like my optimization didn't really give any boost, most probably compiler already optimized everything
 			measurePerformance(shuffle1Optimized);
 
 			trace( "Method 2:" );	// this method is one of the most popular, but its performance is pretty bad
