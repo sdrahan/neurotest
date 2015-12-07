@@ -14,6 +14,9 @@
             <entry library-id="d17bf876-2a9d-40b7-821a-320b7ee93987">
               <dependency linkage="Merged" />
             </entry>
+            <entry library-id="59d790f5-9cb9-4e7c-bdc3-b62ab446c5c9">
+              <dependency linkage="Merged" />
+            </entry>
           </entries>
           <sdk name="air_sdk_19" />
         </dependencies>
@@ -61,6 +64,16 @@
         <properties id="d17bf876-2a9d-40b7-821a-320b7ee93987" />
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/greensock.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="59d790f5-9cb9-4e7c-bdc3-b62ab446c5c9" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/graphics.swc!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

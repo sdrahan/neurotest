@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.4.0</string>
         <key>fileName</key>
-        <string>D:/Projects/neuronation_test/assets/neurotextures.tps</string>
+        <string>D:/Projects/neurotest/assets/neurotextures.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -182,6 +182,15 @@
             <filename>grid_cell_5.png</filename>
             <filename>grid_cell_6.png</filename>
             <filename>grid_cell_7.png</filename>
+            <filename>button_yes_out.png</filename>
+            <filename>button_no_out.png</filename>
+            <filename>button_no_down.png</filename>
+            <filename>button_yes_down.png</filename>
+            <filename>rotator_bg_wrong.png</filename>
+            <filename>rotator_bg_correct.png</filename>
+            <filename>rotator_bg_neutral.png</filename>
+            <filename>button_exit_out.png</filename>
+            <filename>button_exit_down.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -8,11 +8,16 @@ package task_1_rotator_component
 
 	public class NeuroRotatorItemDataVO extends RotatorItemDataVO
 	{
-		public var value:int;
+		public var text:String;
+		public var isCorrect:Boolean;
 
-		public function NeuroRotatorItemDataVO( value:int )
+		public static const CORRECT:String = "Correct";
+		public static const WRONG:String = "Wrong";
+
+		public function NeuroRotatorItemDataVO( text:String, isCorrect:Boolean )
 		{
-			this.value = value;
+			this.text = text;
+			this.isCorrect = isCorrect;
 		}
 	}
 }

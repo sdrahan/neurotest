@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:12dc2729cb86d9c1789c9f1c97303faa:1a00ec5af7f40214f9857a1a42e7b517:c8f20f12322473f53b5dd7cf7eccd63c$ -->
+<!-- $TexturePacker:SmartUpdate:ecd6db200632042332d900989cebf5c6:dc85b6104c80b61fee0eed524401fb2d:c8f20f12322473f53b5dd7cf7eccd63c$ -->
 <TextureAtlas imagePath="neurotexture.png">
-    <SubTexture name="grid_bg_frame" x="2" y="2" width="40" height="40"/>
-    <SubTexture name="grid_cell_1" x="2" y="44" width="30" height="30"/>
-    <SubTexture name="grid_cell_2" x="2" y="76" width="30" height="30"/>
-    <SubTexture name="grid_cell_3" x="34" y="44" width="30" height="30"/>
-    <SubTexture name="grid_cell_4" x="44" y="2" width="30" height="30"/>
-    <SubTexture name="grid_cell_5" x="34" y="76" width="30" height="30"/>
-    <SubTexture name="grid_cell_6" x="76" y="2" width="30" height="30"/>
-    <SubTexture name="grid_cell_7" x="66" y="34" width="30" height="30"/>
+    <SubTexture name="button_exit_down" x="2" y="143" width="100" height="50"/>
+    <SubTexture name="button_exit_out" x="104" y="172" width="100" height="50"/>
+    <SubTexture name="button_no_down" x="2" y="195" width="96" height="96"/>
+    <SubTexture name="button_no_out" x="100" y="224" width="96" height="96"/>
+    <SubTexture name="button_yes_down" x="2" y="293" width="96" height="96"/>
+    <SubTexture name="button_yes_out" x="2" y="391" width="96" height="96"/>
+    <SubTexture name="grid_bg_frame" x="184" y="2" width="40" height="40"/>
+    <SubTexture name="grid_cell_1" x="184" y="44" width="30" height="30"/>
+    <SubTexture name="grid_cell_2" x="216" y="44" width="30" height="30"/>
+    <SubTexture name="grid_cell_3" x="184" y="76" width="30" height="30"/>
+    <SubTexture name="grid_cell_4" x="216" y="76" width="30" height="30"/>
+    <SubTexture name="grid_cell_5" x="184" y="108" width="30" height="30"/>
+    <SubTexture name="grid_cell_6" x="216" y="108" width="30" height="30"/>
+    <SubTexture name="grid_cell_7" x="184" y="140" width="30" height="30"/>
+    <SubTexture name="rotator_bg_correct" x="2" y="2" width="180" height="45"/>
+    <SubTexture name="rotator_bg_neutral" x="2" y="49" width="180" height="45"/>
+    <SubTexture name="rotator_bg_wrong" x="2" y="96" width="180" height="45"/>
 </TextureAtlas>

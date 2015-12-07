@@ -13,18 +13,18 @@ package task_1_rotator_component.components.linearRotator
 		{
 		}
 
-		public function setDataVO( data:RotatorItemDataVO ):void
+		public function setDataVO( value:RotatorItemDataVO ):void
 		{
-			this.data = data;
+			data = value;
+		}
+
+		public function getDataVO():RotatorItemDataVO
+		{
+			return data;
 		}
 
 		public function init():void
 		{
-		}
-
-		public function fadeIn():void
-		{
-			alpha = 1;
 		}
 
 		public function highlight():void
@@ -35,6 +35,11 @@ package task_1_rotator_component.components.linearRotator
 		public function unhighlight( customState:String = "" ):void
 		{
 			scaleX = scaleY = 1;
+		}
+
+		public function fadeIn():void
+		{
+			alpha = 1;
 		}
 
 		public function fadeOut():void

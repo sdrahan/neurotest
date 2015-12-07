@@ -3,6 +3,8 @@ package task_1_rotator_component.components.linearRotator
 
 	import com.greensock.TweenMax;
 
+	import flash.geom.Point;
+
 	import starling.display.Sprite;
 
 	public class LinearRotator extends Sprite
@@ -10,19 +12,20 @@ package task_1_rotator_component.components.linearRotator
 		private var items:Vector.<RotatorItemRenderer>;
 		private var highlightedItemIndex:int;
 		private var isInMotion:Boolean = false;
+		private var layout:ILinearRotatorLayout;
 
-		private static const SPACING:int = 20;
-		private static const OFFSET:int = 10;
-		
 		private static const SHIFT_ANIMATION_DURATION:Number = 0.5;
 
-		public function LinearRotator( itemClass:Class, dataVOs:Vector.<RotatorItemDataVO>, highlightedItemIndex:int )
+		public function LinearRotator( itemClass:Class, dataVOs:Vector.<RotatorItemDataVO>, highlightedItemIndex:int, layout:ILinearRotatorLayout )
 		{
 			items = new <RotatorItemRenderer>[];
+			this.layout = layout;
 
 			checkAndSetHighlightedIndex( highlightedItemIndex, dataVOs.length );
 			createInitialItems( itemClass, dataVOs );
-			updateItemsPosition();
+			layout.updateItemPositions( items );
+
+			items[highlightedItemIndex].highlight();
 		}
 
 		private function checkAndSetHighlightedIndex( highlightedIndex:int, itemsCount:int ):void
@@ -48,11 +51,12 @@ package task_1_rotator_component.components.linearRotator
 				{
 					item.setDataVO( dataVOs[i] );
 					addChild( item );
+					item.init();
 				}
 			}
 		}
 
-		public function pushItemDataVO( dataVO:RotatorItemDataVO, customState:String = "" ):void
+		public function pushItemDataVO( dataVO:RotatorItemDataVO, customStateForUnhighlightedElement:String = "" ):void
 		{
 			if (isInMotion)
 			{
@@ -60,8 +64,8 @@ package task_1_rotator_component.components.linearRotator
 			}
 
 			setupLastItemWithDataVO( dataVO );
-			updateItemsPosition();
-			items[highlightedItemIndex].unhighlight( customState );
+			layout.updateItemPositions( items );
+			items[highlightedItemIndex].unhighlight( customStateForUnhighlightedElement );
 			items[highlightedItemIndex + 1].highlight();
 			moveFirstItemToTheEnd();
 			displayShiftAnimation();
@@ -82,7 +86,7 @@ package task_1_rotator_component.components.linearRotator
 			{
 				TweenMax.killTweensOf( items[i] );
 			}
-			updateItemsPosition();
+			layout.updateItemPositions( items );
 			isInMotion = false;
 		}
 
@@ -97,9 +101,11 @@ package task_1_rotator_component.components.linearRotator
 		{
 			for (var i:int = 0; i < items.length; i++)
 			{
+				var newCoordsForItem:Point = layout.getNewCoordsForItem( items[i] );
 				TweenMax.to(
 						items[i], SHIFT_ANIMATION_DURATION, {
-							y: items[i].y - items[i].getSize().height - SPACING,
+							x: newCoordsForItem.x,
+							y: newCoordsForItem.y,
 							onComplete: function ():void
 							{
 								isInMotion = false
@@ -110,16 +116,9 @@ package task_1_rotator_component.components.linearRotator
 			isInMotion = true;
 		}
 
-		private function updateItemsPosition():void
+		public function getCurrentHighlightedDataVO():RotatorItemDataVO
 		{
-			var currentY:int = OFFSET;
-			for (var i:int = 0; i < items.length; i++)
-			{
-				items[i].x = 0;
-				items[i].y = currentY;
-
-				currentY += items[i].getSize().height + SPACING;
-			}
+			return items[highlightedItemIndex].getDataVO();
 		}
 	}
 }
