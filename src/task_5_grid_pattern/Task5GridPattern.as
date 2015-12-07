@@ -42,6 +42,8 @@ package task_5_grid_pattern
 			for (var i:int = 0; i < ELEMENTS_COUNT; i++)
 			{
 				gridPatterns.push( new GridPattern( Math.random() > 0.5 ? pattern1 : pattern2 ) );
+				gridPatterns[i].x = Math.random() * 700;
+				gridPatterns[i].y = Math.random() * 500;
 			}
 		}
 
@@ -61,8 +63,8 @@ package task_5_grid_pattern
 		{
 			for (var i:int = 0; i < ELEMENTS_COUNT; i++)
 			{
-				gridPatterns[i].x = Math.random() * 700;
-				gridPatterns[i].y = Math.random() * 500;
+				gridPatterns[i].x += Math.random() * 2 - 1;
+				gridPatterns[i].y += Math.random() * 2 - 1;
 			}
 		}
 
@@ -86,12 +88,12 @@ package task_5_grid_pattern
 		private function updateRenderTexture():void
 		{
 			renderTexture.drawBundled(
-					function ()
+					function ():void
 					{
 						for (var i:int = 0; i < ELEMENTS_COUNT; i++)
 						{
-							gridPatterns[i].x = Math.random() * 700;
-							gridPatterns[i].y = Math.random() * 500;
+							gridPatterns[i].x += Math.random() * 2 - 1;
+							gridPatterns[i].y += Math.random() * 2 - 1;
 							renderTexture.draw( gridPatterns[i] );
 						}
 					}
