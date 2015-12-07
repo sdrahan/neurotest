@@ -1,9 +1,14 @@
 # neurotest
 Task 1: made a simple game using LinearRotator component.
+
 Pass the instance of ILinearRotatorLayout to the LinearRotator constructor to set layout type and scroll direction. Create your own instances to customize it.
+
 LinearRotator.pushItemDataVO() is the only method you need to use.
+
 RotatorItemRenderer: you can override init(), getSize(), fadeIn(), fadeOut(), highlight() and unhighlight() methods.
+
 Optional parameter "customState" can be passed to unhighlight(), so ItemRenderer will show custom behaviour (i.e. "correct"/"wrong" in demo).
+
 
 Task 2: implemented two popular sorting methods and compared their performance;
 
