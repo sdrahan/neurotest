@@ -191,6 +191,9 @@
             <filename>rotator_bg_neutral.png</filename>
             <filename>button_exit_out.png</filename>
             <filename>button_exit_down.png</filename>
+            <filename>button_repeat_out.png</filename>
+            <filename>button_repeat_down.png</filename>
+            <filename>circle.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

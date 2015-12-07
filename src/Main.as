@@ -5,11 +5,14 @@ package
 	import flash.events.Event;
 
 	import starling.core.Starling;
+	import starling.display.DisplayObject;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.utils.AssetManager;
 
 	import task_1_rotator_component.Task1RotatorComponent;
+
+	import task_4_path.Task4PathBuilder;
 
 	import task_5_grid_pattern.Task5GridPattern;
 
@@ -19,9 +22,6 @@ package
 		private var _starling:Starling;
 		private var starlingMain:Sprite;
 		private var mainMenu:MainMenu;
-
-		private var task1:Task1RotatorComponent;
-		private var task5:Task5GridPattern;
 
 		public function Main()
 		{
@@ -61,49 +61,10 @@ package
 		private function start():void
 		{
 			mainMenu = new MainMenu();
-			mainMenu.addEventListener( MainMenu.TASK_1, addTask1 );
-			mainMenu.addEventListener( MainMenu.TASK_5, addTask5 );
-			mainMenu.addEventListener( MainMenu.TASK_5_RT, addTask5WithRenderTexture );
-			showMainMenu();
-		}
-
-		private function addTask1( event:flash.events.Event ):void
-		{
-			task1 = new Task1RotatorComponent();
-			starlingMain.addChild( task1 );
-			task1.addEventListener( "Exit", onTask1Exit );
-			hideMainMenu();
-		}
-
-		private function onTask1Exit( event:starling.events.Event ):void
-		{
-			starlingMain.removeChild( task1 );
-			task1.removeEventListener( "Exit", onTask1Exit );
-			task1 = null;
-			showMainMenu();
-		}
-
-		private function addTask5( event:flash.events.Event ):void
-		{
-			task5 = new Task5GridPattern(false);	// start without using single RenderTexture
-			starlingMain.addChild( task5 );
-			task5.addEventListener( "Exit", onTask5Exit );
-			hideMainMenu();
-		}
-
-		private function addTask5WithRenderTexture( event:flash.events.Event ):void
-		{
-			task5 = new Task5GridPattern(true);	// start with using single RenderTexture
-			starlingMain.addChild( task5 );
-			task5.addEventListener( "Exit", onTask5Exit );
-			hideMainMenu();
-		}
-
-		private function onTask5Exit( event:starling.events.Event ):void
-		{
-			starlingMain.removeChild( task5 );
-			task5.removeEventListener( "Exit", onTask5Exit );
-			task5 = null;
+			mainMenu.addEventListener( MainMenu.TASK_1, onTaskSelected );
+			mainMenu.addEventListener( MainMenu.TASK_4, onTaskSelected );
+			mainMenu.addEventListener( MainMenu.TASK_5, onTaskSelected );
+			mainMenu.addEventListener( MainMenu.TASK_5_RT, onTaskSelected );
 			showMainMenu();
 		}
 
@@ -115,6 +76,41 @@ package
 		private function hideMainMenu():void
 		{
 			removeChild( mainMenu );
+		}
+
+		private function onTaskSelected( event:flash.events.Event ):void
+		{
+			var task:DisplayObject;
+			switch (event.type)
+			{
+				case MainMenu.TASK_1:
+					task = new Task1RotatorComponent();
+					break;
+
+				case MainMenu.TASK_4:
+					task = new Task4PathBuilder();
+					break;
+
+				case MainMenu.TASK_5:
+					task = new Task5GridPattern( false );
+					break;
+
+				case MainMenu.TASK_5_RT:
+					task = new Task5GridPattern( true );
+					break;
+			}
+
+			starlingMain.addChild( task );
+			task.addEventListener( "Exit", onTaskExit );
+			hideMainMenu();
+		}
+
+		private function onTaskExit( event:starling.events.Event ):void
+		{
+			var task:DisplayObject = event.currentTarget as DisplayObject;
+			task.removeEventListener( "Exit", onTaskExit );
+			starlingMain.removeChild( task );
+			showMainMenu();
 		}
 	}
 }

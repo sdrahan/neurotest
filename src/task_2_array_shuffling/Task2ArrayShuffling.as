@@ -14,17 +14,29 @@ package task_2_array_shuffling
 
 		private function start():void
 		{
-			trace( "Method 1:" );	// good shuffling method: create another array and put random elements to it from the initial array while splicing it. O(n) solution
-			measurePerformance(shuffle1);
+			/*
+			 Good shuffling method: create another array and put random elements to it from the initial array while splicing it.
+			 O(n) solution.
+			 The only downside is ineffective memory usage since array is being constantly spliced. This may lead to GC "hiccups".
+			 */
+			trace( "Method 1:" );
+			measurePerformance( shuffle1 );
 
-			trace( "Method 1 (optimized):" );	// looks like my optimization didn't really gave any boost, most probably compiler already optimized everything
-			measurePerformance(shuffle1Optimized);
+			/*
+			 Looks like my optimization didn't really give any boost, most probably compiler already optimized everything.
+			 */
+			trace( "Method 1 (optimized):" );
+			measurePerformance( shuffle1Optimized );
 
-			trace( "Method 2:" );	// this method is one of the most popular, but its performance is pretty bad
-			measurePerformance(shuffle2);
+			/*
+			 This method is one of the most popular, but its performance is pretty bad - 10-100 times slower than previous one.
+			 Good side is more effective memory usage though, since array isn't being recreated. Complexity is O(n*n!)
+			 */
+			trace( "Method 2:" );
+			measurePerformance( shuffle2 );
 		}
 
-		private function measurePerformance(shufflingFunction:Function):void
+		private function measurePerformance( shufflingFunction:Function ):void
 		{
 			var initialArray:Array = getInitialArray( ELEMENTS_COUNT );
 			var timeAtTheBeginning:Number = (new Date()).time;
