@@ -1,6 +1,6 @@
 # neurotest
 
-See in action: sergeydragan.com/neurotest/
+See in action: http://sergeydragan.com/neurotest/
 
 Task 1: made a simple game using LinearRotator component.
 
