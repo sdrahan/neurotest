@@ -10,6 +10,7 @@ Task 2: implemented two popular sorting methods and compared their performance;
 Task 3: resulting value is the current time minus one day; the trick was in "int" - not suitable to hold the time
 
 Task 4:
+
     Make dots not overlap with each other:
     1. Build a grid with a cell size depending on dots amount (more dots - less the size of cells);
     2. Put dots in randomly selected cells with some random distance from its center (distance < cell.size/2);
