@@ -102,7 +102,7 @@ package task_4_path
 
 				if (nextPosition == null) // oh no! that means there are no more free cells
 				{
-
+					break;
 				}
 				currentPosition = nextPosition;
 				counter--;
